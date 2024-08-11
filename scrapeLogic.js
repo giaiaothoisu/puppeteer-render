@@ -33,14 +33,17 @@ const scrapeLogic = async (url) => {
     // await page.waitForSelector(searchResultSelector);
     // await page.click(searchResultSelector);
 
+    // Lấy mã HTML của trang web
+    const html = await page.content();
+
     // Locate the full title with a unique string
-    const textSelector = await page.waitForSelector("title");
-    const fullTitle = await textSelector.evaluate((el) => el.textContent);
+    // const textSelector = await page.waitForSelector("title");
+    // const fullTitle = await textSelector.evaluate((el) => el.textContent);
 
     // Print the full title
-    const logStatement = `The title of this blog post is ${fullTitle}`;
-    console.log(logStatement);
-    return logStatement;
+    // const logStatement = `The title of this blog post is ${fullTitle}`;
+    // console.log(logStatement);
+    return html;
   } catch (e) {
     console.error(e);
     return `Something went wrong while running Puppeteer: ${e}`;
